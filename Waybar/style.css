@@ -38,7 +38,7 @@ button:hover {
     padding: 0 5px;
     background-color: rgba (54, 45, 45, 0.5);
     color: #fdc7c9;
-    border-bottom: 2px solid rgba(35, 35, 35, 1.0);
+    border: 2px solid rgba(35, 35, 35, 1.0);
 }
 
 #workspaces button:hover {
@@ -46,8 +46,8 @@ button:hover {
 }
 
 #workspaces button.focused {
-    border-top: 2px solid rgba(253, 199, 201, 0.5);
-    border-bottom: 2px solid rgba(35, 35, 35, 1.0);
+    /*  border: 2px solid rgba(253, 199, 201, 1.0); */
+    border-bottom: 2px solid rgba(40, 85, 119, 1.0);
     color: #ffffff;
     background: #285577;
 }
@@ -72,7 +72,7 @@ button:hover {
 #tray,
 #mode {
     color: #fdc7c9;
-    padding: 0 10px;
+    padding: 0 7px;
 }
 
 #window {
@@ -81,7 +81,6 @@ button:hover {
 }
 #workspaces {
     color: #fdc7c9;
-    margin: 0 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
