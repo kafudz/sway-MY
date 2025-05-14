@@ -10,21 +10,21 @@
    //   "sway/workspaces",
    //   "sway/mode",
         "custom/os_button",
+        "custom/power",
         "keyboard-state",
-        "sway/window"
+	"temperature"
+   //   "sway/window"
     ],
-    //"modules-center": [
+    "modules-center": [
     //    "temperature",
     //    "keyboard-state"
-    //  "clock"
-    //],
+          "clock"
+    ],
     "modules-right": [
-	"temperature",
         "pulseaudio",
         "backlight",
         "battery",
-        "tray",
-        "custom/power"
+        "tray"
     ],
     // Modules configuration
     "sway/workspaces": {
@@ -132,7 +132,7 @@
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		"menu-actions": {
-			"shutdown": "sytemctl poweroff",
+			"shutdown": "systemctl poweroff",
 			"reboot": "systemctl reboot",
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
