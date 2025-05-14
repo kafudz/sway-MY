@@ -19,14 +19,14 @@ set $right l
 set $term foot
 
 # Your preferred application launcher
-set $menu wmenu-run -b -f "IosevkaNerdFontMono 12" -p ">>"
+set $menu wmenu-run -b -l 4 -f "IosevkaNerdFontMono 11" -p ">>"
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # output * bg #F5F3F0 solid_color
-output * bg /home/koi/Pictures/sway-1.png fill
+output * bg /home/koi/Pictures/gamer.jpg fill
 
 # Example configuration:
 #
@@ -222,13 +222,16 @@ bar {
 }
 bar {
     id bar-2
-    status_command i3status
+    status_command py3status
     position bottom
-    height 27px
+    height 30px
+    separator_symbol "]--["
+    workspace_min_width 50
     tray_output none
         colors {
         statusline #fdc7c9
         background #212121
+        separator #fc0303
     }
 }
 
@@ -237,12 +240,14 @@ include /etc/sway/config.d/*
 # My config
 exec --no-startup-id nm-applet
 exec --no-startup-id mako
+bindsym $mod+n exec wofi --show drun
 
 # UI
 font pango:IosevkaNerdFontMono 10
 default_border pixel 2
 
 # SystemD and Dbus and Polkit
+exec /usr/lib/policykit-1-gnome/polkit-kde-authentication-agent-1
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-kde-authentication-agent-1
 exec --no-startup-id systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 exec --no-startup-id dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
@@ -255,8 +260,12 @@ for_window [window_role="dialog"] floating enable
 for_window [app_id="mpv"] floating enable
 for_window [app_id="ark"] floating enable
 for_window [app_id="kcalc"] floating enable
+for_window [app_id="android-file-transfer"] floating enable
+for_window [app_id="isoimagewriter"] floating enable
 
 # Floating Border App
 for_window [app_id="mpv"] border normal
 for_window [app_id="ark"] border normal
 for_window [app_id="kcalc"] border normal
+for_window [app_id="android-file-transfer"] border normal
+for_window [app_id="isoimagewriter"] border normal
