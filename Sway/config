@@ -19,14 +19,14 @@ set $right l
 set $term foot
 
 # Your preferred application launcher
-set $menu wmenu-run -b -l 4 -f "IosevkaNerdFontMono 11" -p ">>"
+set $menu wmenu-run -f "IosevkaNerdFontMono 11" -p ">>"
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# output * bg #F5F3F0 solid_color
-output * bg /home/koi/Pictures/gamer.jpg fill
+# output * bg #0f0f0f solid_color
+output * bg /home/koi/Pictures/wow.png fill
 
 # Example configuration:
 #
@@ -225,13 +225,14 @@ bar {
     status_command py3status
     position bottom
     height 30px
-    separator_symbol "]--["
+    separator_symbol "]---["
     workspace_min_width 50
     tray_output none
         colors {
         statusline #fdc7c9
-        background #212121
-        separator #fc0303
+        background #212121FA
+        separator #ff0000
+	focused_workspace #4c7899 #285577 #fdc7c9
     }
 }
 
