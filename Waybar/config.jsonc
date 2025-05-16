@@ -62,14 +62,14 @@
         "timezone": "Asia/Jakarta",
 	"format": "{:%A, %d %B %Y - %H:%M WIB}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%d-%m-%Y}"
     },
     "temperature": {
         "thermal-zone": 1,
         "hwmon-path": "/sys/class/thermal/thermal_zone1/temp",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C",
         "format-icons": ["", "", ""]
     },
     "backlight": {
