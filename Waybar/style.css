@@ -5,8 +5,8 @@
 }
 
 window#waybar {
-    background-color: rgba(33, 33, 33, 0.9);
-    border-bottom: 2px solid rgba(0, 0, 0, 1.0);
+    background-color: rgba(33, 33, 33, 1.0);
+    border-bottom: 1px solid rgba(0, 0, 0, 1.0);
     color: #fdc7c9;
     transition-property: background-color;
     transition-duration: .5s;
@@ -46,15 +46,13 @@ button:hover {
 }
 
 #workspaces button.focused {
-    border-top: 2px solid rgba(46, 158, 244, 0.4);
-    border-bottom: 2px solid rgba(46, 158, 244, 0.4);
     color: #ffffff;
     background: #285577;
 }
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
-    border-bottom: 2px solid rgba(35, 35, 35, 1.0);
+    border-top: 2px solid rgba(35, 35, 35, 1.0);
 }
 
 #mode {
@@ -70,7 +68,7 @@ button:hover {
 #wireplumber,
 #mode {
     color: #fdc7c9;
-    padding: 0 7px;
+    padding: 0 5px;
 }
 
 #window {
@@ -97,7 +95,8 @@ button:hover {
 }
 
 #battery {
-    color: #fdc7c9;
+   color: #fdc7c9;
+   border-top: 2px solid rgba(255, 255, 0, 0.8);
 }
 
 #battery.charging, #battery.plugged {
@@ -120,6 +119,7 @@ button:hover {
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    margin: 1px;
 }
 
 label:focus {
@@ -127,15 +127,17 @@ label:focus {
 }
 
 #backlight {
-    color: #fdc7c9;
+   color: #fdc7c9;
+   border-top: 2px solid rgba(0, 255, 0, 0.8);
 }
 
 #pulseaudio {
-    color: #fdc7c9;
+   border-top: 2px solid rgba(0, 0, 255, 0.8);
+   color: #fdc7c9;
 }
 
 #pulseaudio.muted {
-    color: #00ff00;
+    color: #ff0000;
 }
 
 #wireplumber {
@@ -147,6 +149,7 @@ label:focus {
     background-color: #f53c3c;
 }
 #temperature {
+    border-top: 2px solid rgba(255, 255, 0, 0.8);
     color: #fdc7c9;
 }
 
@@ -156,8 +159,8 @@ label:focus {
 }
 
 #tray {
-    border-bottom: 3px solid rgba(35, 35, 35, 1.0);
-    background-color: rgba (54, 45, 45, 0.9);
+    border-top: 2px solid rgba(252, 3, 3, 1.0);
+    background-color: rgba (13, 13, 13, 0.5);
     padding: 0 5px;
 }
 
@@ -169,29 +172,32 @@ label:focus {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
     border-radius: 6px;
+    margin: 2px;
 }
 
 #keyboard-state > label {
-    padding: 0 5px;
+   padding: 0 10px;
+   border-top: 2px solid rgba(0, 0, 255, 0.8);
 }
 
 #keyboard-state > label.locked {
     color: #ff0000;
 }
 #custom-os_button {
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "IosevkaNerdFont";
   font-size: 13px;
   padding-left: 12px;
   padding-right: 18px;
-  background-color: rgba (54, 45, 45, 0.7);
+  background-color: rgba (13, 13, 13, 0.5);
   color: #00ff00;
-  border: 1px solid rgba(35, 35, 35, 1.0);
+  border-top: 2px solid rgba(252, 3, 3, 1.0);
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 #custom-os_button:hover {
-  background:  rgba (255, 0, 9, 0.5);
+  background:  rgba (255, 0, 9, 0.8);
   color: #fdc7c9;
 }
 #custom-power {
    color: #ff0000;
+   border-top: 2px solid rgba(0, 255, 0, 0.8);
 }
