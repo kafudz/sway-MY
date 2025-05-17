@@ -230,10 +230,10 @@ bar {
     workspace_min_width 50
     tray_output none
         colors {
-        statusline #fdc7c9
-        background #212121FA
+        statusline #FC8158
+        background #222222
         separator #ff0000
-	focused_workspace #4c7899 #285577 #fdc7c9
+        focused_workspace #C41818 #0A0E14 #FC8185
     }
 }
 
@@ -248,7 +248,7 @@ gaps inner 5px
 
 # UI
 font pango:IosevkaNerdFontMono 10
-default_border pixel 2
+default_border pixel 1
 
 # SystemD and Dbus and Polkit
 exec /usr/lib/policykit-1-gnome/polkit-kde-authentication-agent-1
@@ -273,3 +273,12 @@ for_window [app_id="ark"] border normal
 for_window [app_id="kcalc"] border normal
 for_window [app_id="android-file-transfer"] border normal
 for_window [app_id="isoimagewriter"] border normal
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #c41818   #772828
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
