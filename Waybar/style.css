@@ -5,9 +5,9 @@
 }
 
 window#waybar {
-    background-color: rgba(33, 33, 33, 1.0);
+    background-color: rgba(34, 34, 34, 1.0);
     border-bottom: 1px solid rgba(0, 0, 0, 1.0);
-    color: #fdc7c9;
+    color: #fc8158;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -67,7 +67,7 @@ button:hover {
 #pulseaudio,
 #wireplumber,
 #mode {
-    color: #fdc7c9;
+    color: #fc8158;
     padding: 0 10px;
 }
 
