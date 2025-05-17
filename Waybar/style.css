@@ -68,7 +68,7 @@ button:hover {
 #wireplumber,
 #mode {
     color: #fdc7c9;
-    padding: 0 5px;
+    padding: 0 10px;
 }
 
 #window {
@@ -100,7 +100,7 @@ button:hover {
 }
 
 #battery.charging, #battery.plugged {
-    color: #00ff00;
+    color: #eb4034;
 }
 
 @keyframes blink {
@@ -172,7 +172,7 @@ label:focus {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
     border-radius: 6px;
-    margin: 2px;
+    margin: 2px 0;
 }
 
 #keyboard-state > label {
