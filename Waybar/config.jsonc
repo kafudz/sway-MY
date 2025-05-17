@@ -1,203 +1,141 @@
-* {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, IosevkaNerdFont, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
-}
-
-window#waybar {
-    background-color: rgba(34, 34, 34, 1.0);
-    border-bottom: 1px solid rgba(0, 0, 0, 1.0);
-    color: #fc8158;
-    transition-property: background-color;
-    transition-duration: .5s;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -2px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-}
-
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: rgba (255, 0, 9 ,0.5);
-}
-
-#workspaces button {
-    padding: 0 5px;
-    background-color: rgba (54, 45, 45, 0.5);
-    color: #fdc7c9;
-    border: 1px solid rgba(35, 35, 35, 1.0);
-}
-
-#workspaces button:hover {
-    background: rgba (255, 0, 9, 0.5);
-}
-
-#workspaces button.focused {
-    color: #ffffff;
-    background: #285577;
-}
-
-#workspaces button.urgent {
-    background-color: #eb4d4b;
-    border-top: 2px solid rgba(35, 35, 35, 1.0);
-}
-
-#mode {
-    background-color: #285577;
-    box-shadow: inset 0 -2px #fdc7c9;
-}
-
-#clock,
-#battery,
-#temperature,
-#backlight,
-#pulseaudio,
-#wireplumber,
-#mode {
-    color: #fc8158;
-    padding: 0 10px;
-}
-
-#window {
-    color: #fdc7c9;
-    border-left: 2px solid rgba(35, 35, 35, 1.0);
-    padding-left: 25px;
-}
-#workspaces {
-    color: #fdc7c9;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#clock {
-    color: #fdc7c9;
-}
-
-#battery {
-   color: #fdc7c9;
-   border-top: 2px solid rgba(255, 255, 0, 0.8);
-}
-
-#battery.charging, #battery.plugged {
-    color: #eb4034;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    // "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+   //   "sway/workspaces",
+   //   "sway/mode",
+        "custom/os_button",
+        "custom/power",
+        "keyboard-state",
+	"temperature"
+   //   "sway/window"
+    ],
+    "modules-center": [
+    //    "temperature",
+    //    "keyboard-state"
+          "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "tray"
+    ],
+    // Modules configuration
+    "sway/workspaces": {
+           "disable-scroll": true,
+           "all-outputs": true,
+           "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //    }
+    },
+    "keyboard-state": {
+        "numlock": false,
+        "capslock": true,
+        "format": " {icon} ",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10,
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+    "clock": {
+        "timezone": "Asia/Jakarta",
+	"format": "{:%A, %d %B %Y - %H:%M WIB}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}"
+    },
+    "temperature": {
+        "thermal-zone": 1,
+        "hwmon-path": "/sys/class/thermal/thermal_zone1/temp",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        //"format-icons": ["", "", "", "", ""]
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" ", " ", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/os_button": {
+        "format": "",
+        "on-click": "wofi --show drun",
+        "tooltip": false
+    },
+    "custom/power": {
+        "format" : "  ⏻  ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "systemctl poweroff",
+			"reboot": "systemctl reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
     }
-}
-
-/* Using steps() instead of linear as a timing function to limit cpu usage */
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ff0000;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    margin: 1px;
-}
-
-label:focus {
-    background-color: #000000;
-}
-
-#backlight {
-   color: #fdc7c9;
-   border-top: 2px solid rgba(0, 255, 0, 0.8);
-}
-
-#pulseaudio {
-   border-top: 2px solid rgba(0, 0, 255, 0.8);
-   color: #fdc7c9;
-}
-
-#pulseaudio.muted {
-    color: #ff0000;
-}
-
-#wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
-}
-
-#wireplumber.muted {
-    background-color: #f53c3c;
-}
-#temperature {
-    border-top: 2px solid rgba(255, 255, 0, 0.8);
-    color: #fdc7c9;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
-    border-bottom: 3px solid rgba(35, 35, 35, 1.0);
-}
-
-#tray {
-    border-top: 2px solid rgba(252, 3, 3, 1.0);
-    background-color: rgba (13, 13, 13, 0.5);
-    padding: 0 5px;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
-    border-radius: 6px;
-    margin: 2px 0;
-}
-
-#keyboard-state > label {
-   padding: 0 10px;
-   border-top: 2px solid rgba(0, 0, 255, 0.8);
-}
-
-#keyboard-state > label.locked {
-    color: #ff0000;
-}
-#custom-os_button {
-  font-family: "IosevkaNerdFont";
-  font-size: 13px;
-  padding-left: 12px;
-  padding-right: 18px;
-  background-color: rgba (13, 13, 13, 0.5);
-  color: #00ff00;
-  border-top: 2px solid rgba(252, 3, 3, 1.0);
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-#custom-os_button:hover {
-  background:  rgba (255, 0, 9, 0.8);
-  color: #fdc7c9;
-}
-#custom-power {
-   color: #ff0000;
-   border-top: 2px solid rgba(0, 255, 0, 0.8);
 }
