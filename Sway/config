@@ -20,7 +20,7 @@ set $right l
 set $term foot
 
 # Your preferred application launcher
-set $menu wofi --show run
+set $menu wofi --show drun
 
 ### Output configuration
 #
@@ -223,7 +223,7 @@ bar {
 }
 bar {
     id bar-2
-    status_command py3status
+    status_command py3status 
     position bottom
     height 30px
     separator_symbol "]---["
@@ -231,9 +231,10 @@ bar {
     tray_output none
         colors {
         statusline #FC8158
-        background #222222
+        background #171717
         separator #ff0000
-        focused_workspace #C41818 #0A0E14 #FC8185
+        focused_workspace #C41818 #202020 #FC8185
+        inactive_workspace #333333 #222222 #FC8185
     }
 }
 
@@ -243,18 +244,19 @@ include /etc/sway/config.d/*
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id mako
-bindsym $mod+n exec wofi --show drun
-gaps inner 5px
+exec --no-startup-id thunar --daemon
+bindsym $mod+n exec wofi --show run
+# gaps inner 5px
 
 # UI
 font pango:IosevkaNerdFontMono 10
 default_border pixel 1
 
 # SystemD and Dbus and Polkit
-exec /usr/lib/policykit-1-gnome/polkit-kde-authentication-agent-1
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-kde-authentication-agent-1
-exec --no-startup-id systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
-exec --no-startup-id dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+exec /usr/lib/polkit-kde-authentication-agent-1
+exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 
 # Floating Window
 for_window [window_type="dialog"] floating enable
@@ -262,20 +264,20 @@ for_window [window_role="dialog"] floating enable
 
 # Floating App
 for_window [app_id="mpv"] floating enable
-for_window [app_id="ark"] floating enable
+for_window [app_id="xarchiver"] floating enable
 for_window [app_id="kcalc"] floating enable
 for_window [app_id="android-file-transfer"] floating enable
 for_window [app_id="isoimagewriter"] floating enable
 
 # Floating Border App
 for_window [app_id="mpv"] border normal
-for_window [app_id="ark"] border normal
+for_window [app_id="xarchiver"] border normal
 for_window [app_id="kcalc"] border normal
 for_window [app_id="android-file-transfer"] border normal
 for_window [app_id="isoimagewriter"] border normal
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #c41818   #772828
+client.focused          #772828 #202020 #FC8185 #C41818   #772828
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
