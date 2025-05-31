@@ -2,90 +2,67 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 32, // Waybar height (to be removed for auto height)
+    "height": 35, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-   //   "sway/workspaces",
-   //   "sway/mode",
-        "custom/os_button",
-        "custom/power",
+		"custom/os_button",
+		"sway/language",
+        "custom/storage",
         "keyboard-state",
-	"temperature"
-   //   "sway/window"
+	    "temperature"
     ],
     "modules-center": [
-    //    "temperature",
-    //    "keyboard-state"
-          "clock"
+          "clock",
+          "custom/weather"
     ],
     "modules-right": [
         "pulseaudio",
         "backlight",
         "battery",
-        "tray"
+        "tray",
+        "custom/power"
     ],
     // Modules configuration
-    "sway/workspaces": {
-           "disable-scroll": true,
-           "all-outputs": true,
-           "warp-on-scroll": false,
-           "format": "{name}: {icon}",
-           "format-icons": {
-               "urgent": "",
-               "focused": "",
-               "default": ""
-          }
-    },
     "keyboard-state": {
         "numlock": false,
         "capslock": true,
         "format": " {icon} ",
         "format-icons": {
-            "locked": "",
-            "unlocked": ""
+            "locked": "AA ",
+            "unlocked": "aa "
         }
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
     },
     "tray": {
         "icon-size": 16,
-        "spacing": 10,
-        // "icons": {
-        // "blueman": "bluetooth",
-        // "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        // }
+        "spacing": 10
     },
     "clock": {
         "timezone": "Asia/Jakarta",
-	"format": "{:%A, %d %B %Y - %H:%M WIB}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%d-%m-%Y}"
+	    "format": "   {:%A, %d %B %Y - 󰥔  %H:%M WIB}",
+        "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "   {:%d-%m-%Y}"
     },
     "temperature": {
         "thermal-zone": 1,
         "hwmon-path": "/sys/class/thermal/thermal_zone1/temp",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "format": "  {icon} {temperatureC}°C",
+        "format-icons": [" "," ", " "," "," "]
     },
     "backlight": {
-        // "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
         "states": {
-            // "good": 95,
             "warning": 30,
             "critical": 15
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
@@ -120,6 +97,25 @@
             "default": [" ", " ", " "]
         },
         "on-click": "pavucontrol"
+    },
+    "sway/language": {
+		"format": "  {}",
+		"tooltip": false
+    },
+    "custom/weather": {
+		"format": "{}°C",
+		"tooltip": true,
+		"interval": 3600,
+		"exec": "/usr/bin/wttrbar --location situ-enda",
+		"return-type": "json"
+	},
+    "custom/storage": {
+        "format": "  {}",
+        "format-alt": "{percentage}% ",
+        "format-alt-click": "click-right",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/storage.sh"
     },
     "custom/os_button": {
         "format": "",
