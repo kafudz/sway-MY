@@ -5,7 +5,7 @@
 window {
   border-radius: 5px;
   padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 0, 0, 0.9);
   background-color: rgba(29, 31, 33, 0.95);
 }
 #input {
@@ -13,6 +13,7 @@ window {
   border-radius: 5px;
   background-color: rgba(33, 33, 33, 0.8);
   color: white;
+  border: 1px;
 }
 #inner-box {
   border-radius: 5px;
@@ -29,7 +30,7 @@ window {
   border-radius: 5px;
 }
 #text {
-  padding: 2px;
+  padding: 5px;
   color: #fdc7c9;
   border: 1px #ffffff;
   border-radius: 5px;
@@ -40,7 +41,7 @@ window {
 }
 #entry:selected {
   border-radius: 5px;
-  border: 1px solid;
+  border: 1px solid #ff0000;
   background-color: rgba(80, 80, 80, 0.5);
   color: #ffffff;
 }
