@@ -20,7 +20,8 @@ set $right l
 set $term foot
 
 # Your preferred application launcher
-set $menu wofi --show drun
+# set $menu wofi --show drun
+set $menu wmenu-run -p ">>" -f "JetBrainsMono Nerd Font Mono 11"
 
 ### Output configuration
 #
@@ -207,9 +208,11 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
@@ -226,15 +229,15 @@ bar {
     status_command py3status 
     position bottom
     height 30px
-    separator_symbol "]---["
+    separator_symbol "]=["
     workspace_min_width 50    
     tray_output none
         colors {
-        statusline #FC8158
-        background #171717
-        separator #ff0000
-        focused_workspace #C41818 #202020 #FC8185
-        inactive_workspace #333333 #222222 #FC8185
+        statusline #ff4d4d
+        background #171717E6
+        separator #ffffff
+        focused_workspace #333333 #202020 #ffffff
+        inactive_workspace #333333 #222222 #ff4d4d
     }
 }
 
@@ -244,8 +247,9 @@ include /etc/sway/config.d/*
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id mako
-exec --no-startup-id thunar --daemon
-bindsym $mod+n exec wofi --show run
+exec --no-startup-id pcmanfm -d
+exec --no-startup-id zapzap
+bindsym $mod+n exec wofi --show drun
 # gaps inner 5px
 
 # UI
@@ -268,7 +272,7 @@ for_window [window_type="menu"] floating enable
 for_window [window_role="menu"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
-for_window [title="(?i)(?:copying|deleting|moving|rename)"] floating enable
+for_window [title="(?i)(?:copying|deleting|moving|rename|open)"] floating enable
 
 # Floating App
 for_window [app_id="mpv"] floating enable
@@ -276,7 +280,6 @@ for_window [app_id="xarchiver"] floating enable
 for_window [app_id="kcalc"] floating enable
 for_window [app_id="android-file-transfer"] floating enable
 for_window [app_id="isoimagewriter"] floating enable
-for_window [app_id="bul-rename"] floating enable
 
 # Floating Border App
 for_window [app_id="mpv"] border normal
