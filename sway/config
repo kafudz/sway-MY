@@ -21,14 +21,14 @@ set $term foot
 
 # Your preferred application launcher
 # set $menu wofi --show drun
-set $menu wmenu-run -p ">>" -f "JetBrainsMono Nerd Font Mono 11"
+set $menu wmenu-run -p "[[    " -f "JetBrainsMono Nerd Font Mono 13"
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # output * bg #0f0f0f solid_color
-output * bg /home/koi/Pictures/wow.png fill
+output * bg /home/koi/Pictures/city.jpg fill
 
 # Example configuration:
 #
@@ -40,11 +40,11 @@ output eDP-1 resolution 1920x1080 position 0 0
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
+exec swayidle -w \
+        timeout 1200 'swaylock -f -c 000000' \
+        timeout 3000 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+        before-sleep 'swaylock -f -c 000000'
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -59,13 +59,15 @@ input "1267:12587:ELAN050B:01_04F3:312B_Touchpad" {
        natural_scroll enabled
        middle_emulation enabled
 }
-
+input type:keyboard {
+       xkb_layout "us"
+}
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
 #
-# Basics:
+# Basics
 #
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -116,27 +118,27 @@ input "1267:12587:ELAN050B:01_04F3:312B_Touchpad" {
 # Workspaces:
 #
     # Switch to workspace
-    bindsym $mod+1 workspace number 1: ONE
-    bindsym $mod+2 workspace number 2: TWO
-    bindsym $mod+3 workspace number 3: THREE
-    bindsym $mod+4 workspace number 4: FOUR
-    bindsym $mod+5 workspace number 5: FIVE
-    bindsym $mod+6 workspace number 6: SIX
-    bindsym $mod+7 workspace number 7: SEVEN
-    bindsym $mod+8 workspace number 8: EIGHT
-    bindsym $mod+9 workspace number 9: NINE
-    bindsym $mod+0 workspace number 10: TEN
+    bindsym $mod+1 workspace number 1:ONE
+    bindsym $mod+2 workspace number 2:TWO
+    bindsym $mod+3 workspace number 3:THREE
+    bindsym $mod+4 workspace number 4:FOUR
+    bindsym $mod+5 workspace number 5:FIVE
+    bindsym $mod+6 workspace number 6:SIX
+    bindsym $mod+7 workspace number 7:SEVEN
+    bindsym $mod+8 workspace number 8:EIGHT
+    bindsym $mod+9 workspace number 9:NINE
+    bindsym $mod+0 workspace number 10:TEN
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1: ONE
-    bindsym $mod+Shift+2 move container to workspace number 2: TWO
-    bindsym $mod+Shift+3 move container to workspace number 3: THREE
-    bindsym $mod+Shift+4 move container to workspace number 4: FOUR
-    bindsym $mod+Shift+5 move container to workspace number 5: FIVE
-    bindsym $mod+Shift+6 move container to workspace number 6: SIX
-    bindsym $mod+Shift+7 move container to workspace number 7: SEVEN
-    bindsym $mod+Shift+8 move container to workspace number 8: EIGHT
-    bindsym $mod+Shift+9 move container to workspace number 9: NINE
-    bindsym $mod+Shift+0 move container to workspace number 10: TEN
+    bindsym $mod+Shift+1 move container to workspace number 1:ONE
+    bindsym $mod+Shift+2 move container to workspace number 2:TWO
+    bindsym $mod+Shift+3 move container to workspace number 3:THREE
+    bindsym $mod+Shift+4 move container to workspace number 4:FOUR
+    bindsym $mod+Shift+5 move container to workspace number 5:FIVE
+    bindsym $mod+Shift+6 move container to workspace number 6:SIX
+    bindsym $mod+Shift+7 move container to workspace number 7:SEVEN
+    bindsym $mod+Shift+8 move container to workspace number 8:EIGHT
+    bindsym $mod+Shift+9 move container to workspace number 9:NINE
+    bindsym $mod+Shift+0 move container to workspace number 10:TEN
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -221,41 +223,40 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-     id bar-1
-     swaybar_command waybar
+    id bar-1
+    swaybar_command waybar
 }
 bar {
     id bar-2
     status_command py3status 
     position bottom
-    height 30px
-    separator_symbol "]=["
+    height 27px
+    separator_symbol "  "
     workspace_min_width 50    
     tray_output none
         colors {
         statusline #ff4d4d
         background #171717E6
         separator #ffffff
-        focused_workspace #333333 #202020 #ffffff
+        focused_workspace #333333 #772828 #ffffff
         inactive_workspace #333333 #222222 #ff4d4d
     }
 }
 
 include /etc/sway/config.d/*
 
-# My config
+# My Startup Application
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id mako
-exec --no-startup-id pcmanfm -d
-exec --no-startup-id zapzap
+exec --no-startup-id thunar --daemon
+
+# My Launcher Wofi
 bindsym $mod+n exec wofi --show drun
-# gaps inner 5px
 
 # UI
-font pango:IosevkaNerdFontMono 10
+font pango:JetBrainsMonoNerd Font Mono 10
 default_border pixel 1
-popup_during_fullscreen smart
 xwayland enable
 
 # SystemD and Dbus and Polkit
@@ -280,6 +281,7 @@ for_window [app_id="xarchiver"] floating enable
 for_window [app_id="kcalc"] floating enable
 for_window [app_id="android-file-transfer"] floating enable
 for_window [app_id="isoimagewriter"] floating enable
+for_window [app_id="upscaler"] floating enable
 
 # Floating Border App
 for_window [app_id="mpv"] border normal
@@ -287,6 +289,7 @@ for_window [app_id="xarchiver"] border normal
 for_window [app_id="kcalc"] border normal
 for_window [app_id="android-file-transfer"] border normal
 for_window [app_id="isoimagewriter"] border normal
+for_window [app_id="upscaler"] border normal
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #772828 #202020 #FC8185 #C41818   #772828
