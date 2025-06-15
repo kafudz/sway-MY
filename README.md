@@ -1,2 +1,2 @@
 # sway dotfiles
-Early backup sway window manager
+Personal backup sway window manager
