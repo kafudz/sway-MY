@@ -1,21 +1,21 @@
 // -*- mode: jsonc -*-
 {
     // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "position": "top", // Waybar position (top|bottom|left|right)
     "height": 35, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    // "spacing": 4, // Gaps between modules (4px)
+    "width": 1920, // Waybar width
+    "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
 		"custom/os_button",
 		"sway/language",
-        "custom/storage",
         "keyboard-state",
+        "disk",
 	    "temperature"
     ],
     "modules-center": [
-          "clock",
-          "custom/weather"
+        "clock",
+        "custom/weather"
     ],
     "modules-right": [
         "pulseaudio",
@@ -28,10 +28,10 @@
     "keyboard-state": {
         "numlock": false,
         "capslock": true,
-        "format": " {icon} ",
+        "format": "  {icon}",
         "format-icons": {
-            "locked": "AA ",
-            "unlocked": "aa "
+            "locked": "",
+            "unlocked": ""
         }
     },
     "tray": {
@@ -40,21 +40,25 @@
     },
     "clock": {
         "timezone": "Asia/Jakarta",
-	    "format": "   {:%A, %d %B %Y - 󰥔  %H:%M WIB}",
+		"format": "   {:%A, %d %B %Y - 󰥔  %H:%M WIB}",
         "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "   {:%d-%m-%Y}"
+        "format-alt": "  {:%H:%M WIB}"
     },
     "temperature": {
         "thermal-zone": 1,
         "hwmon-path": "/sys/class/thermal/thermal_zone1/temp",
         "critical-threshold": 80,
-        "format": "  {icon} {temperatureC}°C",
+        "format": "{icon} {temperatureC}°C",
         "format-icons": [" "," ", " "," "," "]
     },
     "backlight": {
-        "format": "{percent}% {icon}",
+        "format": "  {percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
+    "disk": {
+		"format": "   {used} -   {free}",
+		"tooltip": "true"
+	},
     "battery": {
         "states": {
             "warning": 30,
@@ -66,27 +70,17 @@
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         //"format-icons": ["", "", "", "", ""]
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
+        "scroll-step": 5, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-source": "{volume}%  ",
+        "format-source-muted": "  ",
         "format-icons": {
             "headphone": " ",
             "hands-free": "",
@@ -94,7 +88,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": [" ", " ", " "]
+            "default": ["  ", "  ", "  "]
         },
         "on-click": "pavucontrol"
     },
@@ -103,27 +97,19 @@
 		"tooltip": false
     },
     "custom/weather": {
-		"format": "{}°C",
+		"format": "-   {}°C",
 		"tooltip": true,
-		"interval": 3600,
+		"interval": 300,
 		"exec": "/usr/bin/wttrbar --location situ-enda",
 		"return-type": "json"
 	},
-    "custom/storage": {
-        "format": "  {}",
-        "format-alt": "{percentage}% ",
-        "format-alt-click": "click-right",
-        "return-type": "json",
-        "interval": 60,
-        "exec": "~/.config/waybar/storage.sh"
-    },
     "custom/os_button": {
         "format": "",
         "on-click": "wofi --show drun",
         "tooltip": false
     },
     "custom/power": {
-        "format" : "  ⏻  ",
+        "format" : "⏻",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
