@@ -27,8 +27,7 @@ set $menu wmenu-run -p "[[    " -f "JetBrainsMono Nerd Font Mono 13"
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# output * bg #0f0f0f solid_color
-output * bg /home/koi/Pictures/city.jpg fill
+output * bg #0f0f0f solid_color
 
 # Example configuration:
 #
