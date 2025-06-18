@@ -21,7 +21,7 @@ set $term foot
 
 # Your preferred application launcher
 # set $menu wofi --show drun
-set $menu wmenu-run -p "[[    " -f "JetBrainsMono Nerd Font Mono 13"
+set $menu wmenu-run -p "[[    " -f "JetBrainsMono Nerd Font Mono 11"
 
 ### Output configuration
 #
