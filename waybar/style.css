@@ -7,7 +7,7 @@
 window#waybar {
     background-color: rgba(23, 23, 23, 0.9);
     border: 1px solid rgba(196, 24, 24, 0.9);
-    border-bottom: 2px solid rgba(13, 13, 13, 1.0);
+    border-bottom: 3px solid rgba(17, 17, 17, 1.0);
     color: #ff4d4d;
     transition-property: background-color;
     transition-duration: .5s;
@@ -41,9 +41,8 @@ button:hover {
 }
 
 #window {
-    color: #fc8158;
-    border-left: 2px solid rgba(35, 35, 35, 1.0);
-    padding-left: 25px;
+    color: #ff4d4d;
+    padding: 0px 10px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -58,6 +57,9 @@ button:hover {
 
 #clock {
     color: #ff4d4d;
+    background-color: #0d0d0d;
+    padding: 0px 10px;
+    border: 1px solid rgba(35, 35, 35, 1.0);
 }
 
 #battery {
@@ -65,7 +67,6 @@ button:hover {
     padding: 0px 10px;
     border: 1px solid rgba(35, 35, 35, 1.0);
     background-color: rgba (13, 13, 13, 0.5);
-    margin: 2px 1px 3px 1px;
 }
 
 #battery.charging {
@@ -73,7 +74,6 @@ button:hover {
     padding: 0px 10px;
     border: 1px solid rgba(35, 35, 35, 1.0);
     background-color: rgba (13, 13, 13, 0.5);
-    margin: 2px 1px 3px 1px;
 }
 
 #battery.plugged {
@@ -81,7 +81,6 @@ button:hover {
     padding: 0px 10px;
     border: 1px solid rgba(35, 35, 35, 1.0);
     background-color: rgba (13, 13, 13, 0.5);
-    margin: 2px 1px 3px 1px;
 }
 
 @keyframes blink {
@@ -100,7 +99,6 @@ button:hover {
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    margin: 2px 1px 3px 1px;
 }
 
 label:focus {
@@ -112,7 +110,6 @@ label:focus {
     padding: 0px 10px;
     border: 1px solid rgba(35, 35, 35, 1.0);
     background-color: rgba (13, 13, 13, 0.5);
-    margin: 2px 1px 3px 1px;
 }
 
 #pulseaudio {
@@ -120,7 +117,6 @@ label:focus {
     padding: 0px 10px;
     border: 1px solid rgba(35, 35, 35, 1.0);
     background-color: rgba (13, 13, 13, 0.5);
-    margin: 2px 1px 3px 1px;
 }
 
 #pulseaudio.muted {
@@ -140,22 +136,24 @@ label:focus {
     border: 1px solid rgba(35, 35, 35, 1.0);
     background-color: rgba (13, 13, 13, 0.5);
     color: #ff4d4d;
-    margin: 2px 1px 3px 1px;
     padding: 0px 10px;
 }
 
 #temperature.critical {
     background-color: #eb4d4b;
     border: 1px solid rgba(35, 35, 35, 1.0);
-	margin: 2px 1px 3px 1px;
 	color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #tray {
     border: 1px solid rgba(35, 35, 35, 1.0);
     background-color: rgba (13, 13, 13, 0.5);
     padding: 0 10px;
-    margin: 2px 1px 3px 2px;
 }
 
 #tray > .passive {
@@ -173,19 +171,19 @@ label:focus {
    padding: 0 10px;
    border: 1px solid rgba(35, 35, 35, 1.0);
    color: #ff4d4d;
-   margin: 2px 1px 3px 1px;
    background-color: rgba (13, 13, 13, 0.5);
 }
 
 #keyboard-state > label.locked {
     color: #ffffff;
-    margin: 2px 1px 3px 1px;
     border: 1px solid rgba(35, 35, 35, 1.0);
 }
 
 #custom-weather{
-	padding: 0 15px;
-	color: #ff4d4d;
+    padding: 0 10px;
+    color: #ff4d4d;
+    border: 1px solid rgba(35, 35, 35, 1.0);
+    background-color: rgba (13, 13, 13, 0.5);
 }
 
 #language {
@@ -193,15 +191,13 @@ label:focus {
     border: 1px solid rgba(35, 35, 35, 1.0);
     color: #FF4D4D;
     padding: 0 10px;
-    margin: 2px 1px 3px 1px;
 }
 
 #disk{
-	background-color: rgba (13, 13, 13, 0.5);
+    background-color: rgba (13, 13, 13, 0.5);
     border: 1px solid rgba(35, 35, 35, 1.0);
     color: #FF4D4D;
-    padding: 0 5px;
-    margin: 2px 1px 3px 1px;
+    padding: 0 10px;
 }
 
 #custom-os_button {
@@ -212,27 +208,50 @@ label:focus {
   background-color: rgba (13, 13, 13, 0.5);
   color: #ff4d4d;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-  margin: 2px 1px 3px 3px;
   border: 1px solid rgba(35, 35, 35, 1.0);
+  margin: 2px 1px 4px 2px;
 }
 
 #custom-os_button:hover {
   background:  rgba (255, 0, 9, 0.8);
   color: #ffffff;
-  margin: 2px 2px 3px 3px;
+  margin: 2px 1px 4px 2px;
 }
 
 #custom-power {
    color: #ff4d4d;
    border: 1px solid rgba(35, 35, 35, 1.0);
-   margin: 2px 3px 3px 2px;
    background-color: rgba (13, 13, 13, 0.5);
    padding: 0 10px;
+   margin: 2px 3px 4px 1px;
 }
+
 #custom-power:hover {
    color: #ffffff;
    border: 1px solid rgba(35, 35, 35, 1.0);
-   margin: 2px 3px 3px 2px;
    background-color: rgba (255, 0, 9, 0.8);
    padding: 0 10px;
+   margin: 2px 3px 4px 1px;
+}
+
+#window,
+#mode,
+#language,
+#keyboard-state > label,
+#keyboard-state > label.locked,
+#disk,
+#custom-weather,
+#clock,
+#temperature,
+#temperature.critical,
+#pulseaudio,
+#wireplumber,
+#wireplumber.muted,
+#backlight,
+#battery,
+#battery.charging,
+#battery.plugged,
+#battery.critical:not(.charging),
+#tray {
+	margin: 2px 1px 4px 1px;
 }

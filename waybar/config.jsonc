@@ -9,15 +9,15 @@
     "modules-left": [
 		"custom/os_button",
 		"sway/language",
-        "keyboard-state",
-        "disk",
-	    "temperature"
+		"keyboard-state",
+		"disk",
+		"custom/weather"
     ],
     "modules-center": [
-        "clock",
-        "custom/weather"
+		"clock"
     ],
     "modules-right": [
+		"temperature",
         "pulseaudio",
         "backlight",
         "battery",
@@ -40,7 +40,7 @@
     },
     "clock": {
         "timezone": "Asia/Jakarta",
-		"format": "   {:%A, %d %B %Y - 󰥔  %H:%M WIB}",
+	"format": "   {:%A, %d %B %Y - 󰥔  %H:%M WIB}",
         "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "  {:%H:%M WIB}"
     },
@@ -52,11 +52,11 @@
         "format-icons": [" "," ", " "," "," "]
     },
     "backlight": {
-        "format": "  {percent}% {icon}",
+        "format": " {percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "disk": {
-		"format": "   {used} -   {free}",
+		"format": "   {used} -   {free}",
 		"tooltip": "true"
 	},
     "battery": {
@@ -70,7 +70,6 @@
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
-        //"format-icons": ["", "", "", "", ""]
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
     "pulseaudio": {
@@ -93,14 +92,14 @@
         "on-click": "pavucontrol"
     },
     "sway/language": {
-		"format": "  {}",
+		"format": "  {}",
 		"tooltip": false
     },
     "custom/weather": {
-		"format": "-   {}°C",
+		"format": "  {}°C",
 		"tooltip": true,
 		"interval": 300,
-		"exec": "/usr/bin/wttrbar --location situ-enda",
+		"exec": "/usr/bin/wttrbar --location situ-enda --nerd",
 		"return-type": "json"
 	},
     "custom/os_button": {
@@ -109,7 +108,7 @@
         "tooltip": false
     },
     "custom/power": {
-        "format" : "⏻",
+        "format" : "",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
